@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What&rsquo;s The Move — waitlist</title>
+  <meta name="description" content="A plans app for Pittsburgh, ages 17–25. Invite-only beta opening January 2027. Join the waitlist with your email.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0a0a0a;
+      --paper: #EDE8DF;
+      --dim: #8a877f;
+      --line: #2a2a28;
+      --hot: #C9A54A;
+      --serif: 'Instrument Serif', 'Times New Roman', serif;
+      --grotesk: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: var(--ink); color: var(--paper); }
+    body {
+      font-family: var(--grotesk);
+      font-size: 13px;
+      line-height: 1.45;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      -webkit-font-smoothing: antialiased;
+    }
+    .edge {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 24px;
+      font-size: 12px;
+      color: var(--dim);
+    }
+    .edge strong { color: var(--paper); font-weight: 500; }
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 360px);
+      gap: 48px 64px;
+      align-items: end;
+      padding: 8vh 24px 6vh;
+      max-width: 1320px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(56px, 10.5vw, 168px);
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+    }
+    h1 em { font-style: italic; color: var(--hot); }
+    .side { display: grid; gap: 32px; }
+    .lede { font-size: 15px; line-height: 1.5; max-width: 34ch; }
+    ol { list-style: none; border-top: 1px solid var(--line); }
+    ol li {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    ol li span { color: var(--dim); }
+    form { display: grid; gap: 10px; }
+    label { font-size: 12px; color: var(--dim); }
+    .row { display: grid; grid-template-columns: 1fr auto; border: 1px solid var(--paper); }
+    input[type=email] {
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      color: var(--paper);
+      font: inherit;
+      font-size: 16px; /* 16px stops iOS zooming on focus */
+      padding: 14px 14px;
+      min-width: 0;
+      outline: none;
+    }
+    input[type=email]::placeholder { color: #5c5a55; }
+    .row:focus-within { outline: 2px solid var(--hot); outline-offset: 2px; }
+    button {
+      background: var(--paper);
+      color: var(--ink);
+      border: 0;
+      border-radius: 0;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 0 18px;
+      cursor: pointer;
+      min-height: 48px;
+    }
+    button:hover:not(:disabled) { background: var(--hot); color: var(--ink); }
+    button:disabled, input:disabled { opacity: 0.45; cursor: not-allowed; }
+    .trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+    #status { min-height: 1.45em; font-size: 12px; color: var(--dim); }
+    #status[data-tone=ok] { color: var(--paper); }
+    #status[data-tone=error] { color: var(--hot); }
+    .fine { font-size: 12px; color: var(--dim); }
+    @media (max-width: 820px) {
+      main { grid-template-columns: 1fr; padding: 6vh 16px 4vh; gap: 36px; align-items: start; }
+      .edge { padding: 14px 16px; }
+      .edge.bottom { flex-direction: column; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="edge">
+    <strong data-brand>What&rsquo;s The Move</strong>
+    <span>Pittsburgh</span>
+  </header>
+
+  <main>
+    <h1>Tonight&rsquo;s plans, and which friends are <em>in.</em></h1>
+
+    <div class="side">
+      <p class="lede">
+        <span data-brand>What&rsquo;s The Move</span> is a plans app for Pittsburgh, ages 17&ndash;25. See what&rsquo;s
+        happening tonight and this week, tap &ldquo;I&rsquo;m in&rdquo;, and sort the details in
+        the plan&rsquo;s own chat.
+      </p>
+
+      <ol>
+        <li><span>01</span>What&rsquo;s on tonight and this week, in one place.</li>
+        <li><span>02</span>Which of your friends are in.</li>
+        <li><span>03</span>One tap to say &ldquo;I&rsquo;m in.&rdquo; Every plan has its own chat.</li>
+      </ol>
+
+      <form id="waitlist" novalidate>
+        <label for="email">Join the waitlist. Email only.</label>
+        <div class="row">
+          <input id="email" name="email" type="email" inputmode="email" autocomplete="email"
+                 placeholder="you@email.com" maxlength="254" required>
+          <button type="submit">Join</button>
+        </div>
+        <div class="trap" aria-hidden="true">
+          <label for="website">Leave this empty</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <p id="status" role="status" aria-live="polite"></p>
+      </form>
+
+      <p class="fine">
+        Invite-only beta, opening January 2027 in Pittsburgh, starting with the
+        founders&rsquo; own friends.
+      </p>
+    </div>
+  </main>
+
+  <footer class="edge bottom">
+    <span>waitlist / invite-only beta opening January 2027</span>
+    <span>Ages 17&ndash;25</span>
+  </footer>
+
+  <script type="module" src="./waitlist.js"></script>
+</body>
+</html>
